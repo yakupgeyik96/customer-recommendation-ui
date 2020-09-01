@@ -7,10 +7,17 @@ class Navbar extends React.Component {
 
     navItems = items.NAV_ITEMS;
 
-    state = { activeIndex: null };
+    state = {
+        activeIndex: null,
+        userId: null
+    };
 
     onItemClick = (value) => {
         this.setState({ activeIndex: value });
+    };
+
+    onInputChange = (e) => {
+        this.setState({ userId: e.target.value });
     };
 
     renderedItems = () => this.navItems.map((navItem) => {
@@ -23,25 +30,40 @@ class Navbar extends React.Component {
                     key={navItem.id}
                     value={navItem.value}
                     path={navItem.path}
-                    classname={`${navItem.classname} ${active}`}
-                    icon={navItem.icon}
-                />
+                    classname={`${navItem.classname} ${active}`}>
+                    <i className={navItem.icon} />
+                </NavItem>
             );
         }
     );
 
+
     render() {
-        const classs = "ui compact stackable large labeled icon secondary pointing five item menu";
         return (
-            <div className="ui compact stackable menu five item labeled icon huge">
-                <Link
-                    className="item"
-                    to="/">
-                    <h2 style={{ color:'green', fontSize:'30px'}}>ENUYGUN</h2>
-                </Link>
-                {
-                    this.renderedItems()
-                }
+            <div className="ui container">
+                <div className="ui stackable menu massive">
+                    <Link className="item" to="/">
+                    <span
+                        style={{ color:'#63BC47', fontSize:'30px', fontWeight:'bold'}}>
+                        ENUYGUN
+                    </span>
+                    </Link>
+                    {
+                        this.renderedItems()
+                    }
+                    <div className="right menu">
+                        <div className="item">
+                            <div className="ui transparent icon input">
+                                <input
+                                    type="text" placeholder="Kullanıcı id"
+                                    onChange={this.onInputChange}/>
+                                <i
+                                    className="search link icon"
+                                    style={{ color: '#63BC47' }}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -2,6 +2,8 @@ import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {fetchUser} from "../actions";
 
 class Navbar extends React.Component {
 
@@ -20,6 +22,11 @@ class Navbar extends React.Component {
         this.setState({ userId: e.target.value });
     };
 
+    onSearch = (e) => {
+        e.preventDefault();
+        this.props.fetchUser(this.state.userId);
+    };
+
     renderedItems = () => this.navItems.map((navItem) => {
 
             const active = this.state.activeIndex === navItem.value ? 'active' : null;
@@ -36,7 +43,6 @@ class Navbar extends React.Component {
             );
         }
     );
-
 
     render() {
         return (
@@ -57,7 +63,7 @@ class Navbar extends React.Component {
                                 <input
                                     type="text" placeholder="Kullanıcı id"
                                     onChange={this.onInputChange}/>
-                                <i
+                                <i  onClick={this.onSearch}
                                     className="search link icon"
                                     style={{ color: '#63BC47' }}/>
                             </div>
@@ -69,4 +75,12 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+    console.log(state.user);
+    return { user: state.user };
+};
+
+export default connect(
+    mapStateToProps,
+    { fetchUser }
+)(Navbar);

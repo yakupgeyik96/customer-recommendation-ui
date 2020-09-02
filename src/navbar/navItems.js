@@ -3,7 +3,7 @@ export const NAV_ITEMS = [
     {
         id: 1,
         value: 'Profil',
-        path: '/',
+        path: '/profil',
         classname: 'green item',
         icon: "large user icon"
     },

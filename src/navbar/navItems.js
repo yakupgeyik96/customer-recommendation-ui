@@ -1,3 +1,5 @@
+/* Navbar elemanlarının ilgili özelliklerini tutar */
+
 export const NAV_ITEMS = [
   {
     id: 1,
@@ -13,11 +15,11 @@ export const NAV_ITEMS = [
     classname: "green item",
     icon: "large paper plane icon",
   },
-  {
+  /*{
     id: 3,
     value: "Hakkımızda",
     path: "/hakkimizda",
     classname: "green item",
     icon: "large address card icon",
-  },
+  },*/
 ];

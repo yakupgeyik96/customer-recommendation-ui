@@ -38,7 +38,7 @@ class Navbar extends React.Component {
                     value={navItem.value}
                     path={navItem.path}
                     classname={`${navItem.classname} ${active}`}>
-                    <i style={{ pointerEvents:'none' }} className={navItem.icon} />
+                    <i className={navItem.icon} />
                 </NavItem>
             );
         }

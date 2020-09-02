@@ -10,6 +10,8 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route path="/profil" exact component={Slider} />
+          <Route path="/firsatlar" />
+          <Route path="/hakkimizda" />
         </Switch>
       </BrowserRouter>
     );

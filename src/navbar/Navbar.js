@@ -1,9 +1,9 @@
 import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import {fetchUser} from "../actions";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions";
 
 class Navbar extends React.Component {
 
@@ -14,14 +14,18 @@ class Navbar extends React.Component {
         userId: null
     };
 
+    /* Nav item tıklandığında text içeriğini state'e ata */
     onItemClick = (value) => {
         this.setState({ activeIndex: value });
     };
 
+    /* Searchbar'a girilen id değerini state'e ata */
     onInputChange = (e) => {
         this.setState({ userId: e.target.value });
     };
 
+    /* Id sorgulama yapıldığında actions klasörü içindeki fetchUser
+     * fonksiyonunu kullanarak sorgu yap */
     onSearch = (e) => {
         e.preventDefault();
         this.props.fetchUser(this.state.userId);
@@ -29,6 +33,7 @@ class Navbar extends React.Component {
 
     renderedItems = () => this.navItems.map((navItem) => {
 
+            /* Nav elemanına tıklandığında "active" yapılmasını sağlayan lojik */
             const active = this.state.activeIndex === navItem.value ? 'active' : null;
 
             return (
@@ -38,7 +43,7 @@ class Navbar extends React.Component {
                     value={navItem.value}
                     path={navItem.path}
                     classname={`${navItem.classname} ${active}`}>
-                    <i className={navItem.icon} />
+                    <i style={{ pointerEvents: 'none' }} className={navItem.icon} />
                 </NavItem>
             );
         }
@@ -55,8 +60,9 @@ class Navbar extends React.Component {
                     </span>
                     </Link>
                     {
-                        this.renderedItems()
+                        this.renderedItems() /* Nav items */
                     }
+                    {/* Searchbar */}
                     <div className="right menu">
                         <div className="item">
                             <div className="ui transparent icon input">
@@ -75,11 +81,13 @@ class Navbar extends React.Component {
     }
 }
 
+// redux storedan propsları elde et
 const mapStateToProps = state => {
     console.log(state.user);
     return { user: state.user };
 };
 
+// componenti reduxa bağla
 export default connect(
     mapStateToProps,
     { fetchUser }

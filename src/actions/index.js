@@ -3,6 +3,5 @@ import users from '../api/users';
 
 export const fetchUser = (id) => async dispatch => {
     const response = await users.get(`/users/${id}`);
-    console.log(response.data);
     dispatch({ type: types.FETCH_USER, payload: response.data });
 };

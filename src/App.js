@@ -16,6 +16,7 @@ class App extends React.Component {
             <Route path="/firsatlar" /> {/* Fırsatlar sayfasına yönlendir */}
           </Switch>
         </BrowserRouter>
+
     );
   }
 }

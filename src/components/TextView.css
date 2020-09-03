@@ -1,0 +1,40 @@
+.intro {
+  font-family: "Roboto";
+  font-size: 26px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 350px;
+  max-width: 500px;
+  margin: auto;
+  grid-gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px 0px #1b1c1d;
+  border: 2px rgba(0, 0, 0, 0.3) dashed;
+}
+
+.grid-div {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 0;
+  font-size: calc((0.4em + 2vmin) + (0.4em + 2vmax));
+  text-overflow: ellipsis;
+}
+
+.ticket-description {
+  margin: auto;
+}
+
+@media screen and (min-width: 320px) {
+  .ticket-description {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  .ticket-description {
+    font-size: 36px;
+  }
+}

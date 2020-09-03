@@ -3,8 +3,8 @@
 export const NAV_ITEMS = [
   {
     id: 1,
-    value: "Profil",
-    path: "/profil",
+    value: "Sana Özel",
+    path: "/sana-ozel",
     classname: "green item",
     icon: "large user icon",
   },

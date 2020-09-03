@@ -10,10 +10,10 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/profil" />{" "}
+            <Redirect to="/sana-ozel" />{" "}
             {/* ilk girişte profil sayfasına yönlendirme yap */}
           </Route>
-          <Route path="/profil" exact component={Body} />{" "}
+          <Route path="/sana-ozel" exact component={Body} />{" "}
           {/* Profil sayfasına yönlendir */}
           <Route path="/firsatlar" /> {/* Fırsatlar sayfasına yönlendir */}
         </Switch>

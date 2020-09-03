@@ -16,7 +16,7 @@ class InfoItem extends React.Component {
           <div class="content">
             <div class="header">
               Bizden bu zamana kadar tam
-              <span style={spanStyle}>{` ${this.props.ticketNumber} `}</span>
+              <span style={spanStyle}>{` ${this.props.amountOfTicket} `}</span>
               bilet aldın!
             </div>
             <div class="meta">

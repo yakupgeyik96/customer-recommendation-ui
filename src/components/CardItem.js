@@ -7,7 +7,9 @@ class CardItem extends React.Component {
             <div
                 className={`myitem ${this.props.shadow} ${this.props.active}`}>
                 <div style={{ textAlign: 'center' }}>
-                    <span style={{ fontFamily: 'Balsamiq Sans' }}>{this.props.children}</span>
+                    <div className="card-container">
+                        <span style={{ fontFamily: 'Balsamiq Sans' }}>{this.props.children}</span>
+                    </div>
                 </div>
             </div>
         );

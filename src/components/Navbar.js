@@ -10,7 +10,7 @@ class Navbar extends React.Component {
     navItems = items.NAV_ITEMS;
 
     state = {
-        activeIndex: null,
+        activeIndex: "Profil",
         userId: null
     };
 
@@ -53,11 +53,11 @@ class Navbar extends React.Component {
         return (
             <div className="ui container">
                 <div className="ui stackable menu massive">
-                    <Link className="item" to="/">
-                    <span
-                        style={{ color:'#63BC47', fontSize:'30px', fontWeight:'bold'}}>
-                        ENUYGUN
-                    </span>
+                    <Link className="item" to="/profil">
+                        <span
+                            style={{ color:'#63BC47', fontSize:'30px', fontWeight:'bold'}}>
+                            ENUYGUN
+                        </span>
                     </Link>
                     {
                         this.renderedItems() /* Nav items */

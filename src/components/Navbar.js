@@ -3,7 +3,7 @@ import NavItem from "./NavItem";
 import * as items from './navItems';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
+import { fetchUser, fetchRecommend } from "../actions";
 
 class Navbar extends React.Component {
 
@@ -21,6 +21,7 @@ class Navbar extends React.Component {
 
     /* Searchbar'a girilen id değerini state'e ata */
     onInputChange = (e) => {
+
         this.setState({ userId: e.target.value });
     };
 
@@ -28,6 +29,7 @@ class Navbar extends React.Component {
      * fonksiyonunu kullanarak sorgu yap */
     onSearch = (e) => {
         e.preventDefault();
+        this.props.fetchRecommend(this.state.userId);
         this.props.fetchUser(this.state.userId);
     };
 
@@ -83,12 +85,11 @@ class Navbar extends React.Component {
 
 // redux storedan propsları elde et
 const mapStateToProps = state => {
-    console.log(state.user);
     return { user: state.user };
 };
 
 // componenti reduxa bağla
 export default connect(
     mapStateToProps,
-    { fetchUser }
+    { fetchUser, fetchRecommend }
 )(Navbar);

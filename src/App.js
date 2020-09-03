@@ -1,7 +1,8 @@
 import React from "react";
 import { Redirect, BrowserRouter, Route, Switch } from "react-router-dom";
-import Navbar from "./navbar/Navbar";
+import Navbar from "./components/Navbar";
 import Body from "./components/Body";
+import Recommendations from "./pages/Recommendations";
 
 class App extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class App extends React.Component {
                 </Route>
                 <Route path="/profil" exact component={Body} />
                 {/* Profil sayfasına yönlendir */}
-                <Route path="/firsatlar" /> {/* Fırsatlar sayfasına yönlendir */}
+                <Route path="/firsatlar" exact component={Recommendations} /> {/* Fırsatlar sayfasına yönlendir */}
             </Switch>
         </BrowserRouter>
     );

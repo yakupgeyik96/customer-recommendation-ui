@@ -1,0 +1,34 @@
+
+.alert-message-container {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-message {
+    padding: 2rem;
+    background-color: #63BC47;
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 80%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 25px 10px gray;
+    opacity: 0.5;
+    animation-name: deneme;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.alert-text {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+@keyframes deneme {
+    from {opacity: 0.5;}
+    to {opacity: 1; background-color: red}
+}

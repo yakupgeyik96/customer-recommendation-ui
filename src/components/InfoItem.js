@@ -21,9 +21,9 @@ class InfoItem extends React.Component {
             </div>
             <div class="meta">
               <div class="description">
-                <p style={{ color: "#63bc47" }}>
+                <a href="#link" style={{ color: "#63bc47" }}>
                   Bir sonrakini almaya ne dersin?
-                </p>
+                </a>
               </div>
             </div>
           </div>

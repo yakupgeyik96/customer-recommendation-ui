@@ -7,18 +7,19 @@ import Recommendations from "./pages/Recommendations";
 class App extends React.Component {
   render() {
     return (
-        <BrowserRouter>
-            <Navbar />
-            <Switch>
-                <Route path="/" exact>
-                    <Redirect to="/profil" />{" "}
-                    {/* ilk girişte profil sayfasına yönlendirme yap */}
-                </Route>
-                <Route path="/profil" exact component={Body} />
-                {/* Profil sayfasına yönlendir */}
-                <Route path="/firsatlar" exact component={Recommendations} /> {/* Fırsatlar sayfasına yönlendir */}
-            </Switch>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/sana-ozel" />{" "}
+            {/* ilk girişte profil sayfasına yönlendirme yap */}
+          </Route>
+          <Route path="/sana-ozel" exact component={Body} />{" "}
+          {/* Profil sayfasına yönlendir */}
+          <Route path="/firsatlar" exact component={Recommendations} />{" "}
+          {/* Fırsatlar sayfasına yönlendir */}
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

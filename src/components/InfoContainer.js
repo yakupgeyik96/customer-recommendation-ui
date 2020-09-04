@@ -7,6 +7,7 @@ class InfoContainer extends React.Component {
       <div className="ui raised very padded text container segment">
         <InfoItem />
         <InfoItem />
+        <InfoItem />
       </div>
     );
   }

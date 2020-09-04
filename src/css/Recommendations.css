@@ -1,0 +1,79 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*************** Recommendations.js styles ***************/
+.mycontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2rem;
+    margin: 1rem 8rem;
+}
+
+/**************** CardItem.js styles *****************/
+.myitem {
+    background-color: white;
+    width: 25rem;
+    height: 25rem;
+    padding: 2rem;
+    margin: 2rem;
+    font-size: 35px;
+    border: 2px solid gray;
+    border-radius: 0.5rem;
+    transition: all 100ms;
+    opacity: 0.8;
+}
+
+.myitem:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px 5px black;
+    width: 26rem;
+    height: 26rem;
+    margin: 1rem;
+    opacity: 1;
+}
+
+.myitem:hover .card-image {
+    height: 18rem;
+    width: 25rem;
+}
+
+.myitem-active {
+    border-color: #63BC47;
+    background-color: #63BC47;
+    color: white;
+    border-width: 5px;
+    box-shadow: 0 0 15px 5px black;
+    width: 26rem;
+    height: 26rem;
+    margin: 1rem;
+    opacity: 1;
+}
+
+.myitem-active .card-image {
+    height: 18rem;
+    width: 25rem;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image {
+    width: 24rem;
+    height: 17rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    transition: all 100ms;
+}
+
+
+
+

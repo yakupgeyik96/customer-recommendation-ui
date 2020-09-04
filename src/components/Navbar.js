@@ -1,16 +1,16 @@
 import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
+import { fetchUser, fetchRecommend } from "../actions";
+import '../css/Navbar.css';
 
 class Navbar extends React.Component {
 
     navItems = items.NAV_ITEMS;
 
     state = {
-        activeIndex: null,
+        activeIndex: "Profil",
         userId: null
     };
 
@@ -28,6 +28,7 @@ class Navbar extends React.Component {
      * fonksiyonunu kullanarak sorgu yap */
     onSearch = (e) => {
         e.preventDefault();
+        this.props.fetchRecommend(this.state.userId);
         this.props.fetchUser(this.state.userId);
     };
 
@@ -53,12 +54,11 @@ class Navbar extends React.Component {
         return (
             <div className="ui container">
                 <div className="ui stackable menu massive">
-                    <Link className="item" to="/">
-                    <span
-                        style={{ color:'#63BC47', fontSize:'30px', fontWeight:'bold'}}>
-                        ENUYGUN
-                    </span>
-                    </Link>
+                    <div className="logo-container">
+                        <span className="logo-text">
+                            ENUYGUN
+                        </span>
+                    </div>
                     {
                         this.renderedItems() /* Nav items */
                     }
@@ -68,10 +68,10 @@ class Navbar extends React.Component {
                             <div className="ui transparent icon input">
                                 <input
                                     type="text" placeholder="Kullanıcı id"
-                                    onChange={this.onInputChange}/>
+                                    onChange={this.onInputChange} />
                                 <i  onClick={this.onSearch}
                                     className="search link icon"
-                                    style={{ color: '#63BC47' }}/>
+                                    style={{ color: '#63BC47', marginRight: '1rem' }} />
                             </div>
                         </div>
                     </div>
@@ -83,12 +83,11 @@ class Navbar extends React.Component {
 
 // redux storedan propsları elde et
 const mapStateToProps = state => {
-    console.log(state.user);
     return { user: state.user };
 };
 
 // componenti reduxa bağla
 export default connect(
     mapStateToProps,
-    { fetchUser }
+    { fetchUser, fetchRecommend }
 )(Navbar);

@@ -1,0 +1,14 @@
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-text {
+    color: #63BC47;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}

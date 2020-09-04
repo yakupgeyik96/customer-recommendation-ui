@@ -11,7 +11,7 @@ class InfoItem extends React.Component {
       <div class="ui items">
         <div class="item">
           <div class="ui small image">
-            <img src="/images/wireframe/image.png"></img>
+            <img src="/images/wireframe/image.png"/>
           </div>
           <div class="content">
             <div class="header">

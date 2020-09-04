@@ -1,9 +1,9 @@
 import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUser, fetchRecommend } from "../actions";
+import '../css/Navbar.css';
 
 class Navbar extends React.Component {
 
@@ -21,7 +21,6 @@ class Navbar extends React.Component {
 
     /* Searchbar'a girilen id değerini state'e ata */
     onInputChange = (e) => {
-
         this.setState({ userId: e.target.value });
     };
 
@@ -55,12 +54,11 @@ class Navbar extends React.Component {
         return (
             <div className="ui container">
                 <div className="ui stackable menu massive">
-                    <Link className="item" to="/profil">
-                        <span
-                            style={{ color:'#63BC47', fontSize:'30px', fontWeight:'bold'}}>
+                    <div className="logo-container">
+                        <span className="logo-text">
                             ENUYGUN
                         </span>
-                    </Link>
+                    </div>
                     {
                         this.renderedItems() /* Nav items */
                     }
@@ -70,10 +68,10 @@ class Navbar extends React.Component {
                             <div className="ui transparent icon input">
                                 <input
                                     type="text" placeholder="Kullanıcı id"
-                                    onChange={this.onInputChange}/>
+                                    onChange={this.onInputChange} />
                                 <i  onClick={this.onSearch}
                                     className="search link icon"
-                                    style={{ color: '#63BC47' }}/>
+                                    style={{ color: '#63BC47', marginRight: '1rem' }} />
                             </div>
                         </div>
                     </div>

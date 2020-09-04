@@ -1,6 +1,5 @@
 import React from "react";
-import "./TextView.css";
-
+import "../css/TextView.css";
 class TextView extends React.Component {
   render() {
     return (
@@ -10,11 +9,14 @@ class TextView extends React.Component {
           <div className="grid-div">
             <i className="plane icon" style={{ fontSize: "48px" }}></i>
           </div>
-          <div className="grid-div">
+
+          <div className="grid-div grid-text">
             <p className="ticket-description">IST - GZT 1.05.2019 - 12:10:00</p>
+            <p className="ticket-text">
+              <i>Yenisini almaya ne dersin?</i>
+            </p>
           </div>
         </div>
-        <p className="intro">Yenisini almaya ne dersin?</p>
       </div>
     );
   }

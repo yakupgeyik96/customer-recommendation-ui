@@ -12,7 +12,8 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 15px 0px #1b1c1d;
-  border: 2px rgba(0, 0, 0, 0.3) dashed;
+  border: 2px rgba(0, 0, 0, 0.2) dashed;
+  background-color: #f1f1f1;
 }
 
 .grid-div {
@@ -24,8 +25,20 @@
   text-overflow: ellipsis;
 }
 
+.grid-text {
+  border-left: 2px dashed rgba(0, 0, 0, 0.2);
+  margin: initial;
+}
+
 .ticket-description {
   margin: auto;
+  max-width: 500px;
+}
+
+.ticket-text {
+  color: #63bc47;
+  font-size: 24px;
+  max-width: 500px;
 }
 
 @media screen and (min-width: 320px) {

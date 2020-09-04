@@ -11,7 +11,7 @@ class InfoItem extends React.Component {
       <div class="ui items">
         <div class="item">
           <div class="ui small image">
-            <img src="/images/wireframe/image.png"/>
+            <i className="location arrow icon" style={{ fontSize: "48px" }}></i>
           </div>
           <div class="content">
             <div class="header">
@@ -21,7 +21,9 @@ class InfoItem extends React.Component {
             </div>
             <div class="meta">
               <div class="description">
-                <p>Hello</p>
+                <p style={{ color: "#63bc47" }}>
+                  Bir sonrakini almaya ne dersin?
+                </p>
               </div>
             </div>
           </div>

@@ -8,19 +8,19 @@ const spanStyle = {
 class InfoItem extends React.Component {
   render() {
     return (
-      <div class="ui items">
-        <div class="item">
-          <div class="ui small image">
-            <i className="location arrow icon" style={{ fontSize: "48px" }}></i>
+      <div className="ui items">
+        <div className="item">
+          <div className="ui small image">
+            <i className="location arrow icon" style={{fontSize: "48px"}}/>
           </div>
-          <div class="content">
-            <div class="header">
+          <div className="content">
+            <div className="header">
               Bizden bu zamana kadar tam
               <span style={spanStyle}>{` ${this.props.amountOfTicket} `}</span>
               bilet aldın!
             </div>
-            <div class="meta">
-              <div class="description">
+            <div className="meta">
+              <div className="description">
                 <a href="#link" style={{ color: "#63bc47" }}>
                   Bir sonrakini almaya ne dersin?
                 </a>

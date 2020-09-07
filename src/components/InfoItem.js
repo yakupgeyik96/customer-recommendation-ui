@@ -1,8 +1,8 @@
 import React from "react";
 
 const spanStyle = {
-  fontSize: "24px",
-  color: "#63BC47",
+    fontSize: "24px",
+    color: "#63BC47",
 };
 
 const imageStyle = {
@@ -11,6 +11,7 @@ const imageStyle = {
 };
 
 class InfoItem extends React.Component {
+
   render() {
     const iconColor = this.props.iconColor;
     return (

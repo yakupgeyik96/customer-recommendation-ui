@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { fetchRecommend, fetchUser } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
+import ConcessionCard from "../components/ConcessionCard";
+import PrivatizedGiftCard from "../components/PrivatizedGiftCard";
 
 class Recommendations extends React.Component {
 
@@ -26,11 +28,41 @@ class Recommendations extends React.Component {
         console.log(event.target.parentNode.textContent); /* CardItem tıklandığında önerile metnini state'a ata */
     };
 
+    renderConcessionCard = () => {
+        if (this.props.user.score === "Az") {
+            return <ConcessionCard concession="%5" />
+        }
+        else if (this.props.user.score === "Orta") {
+            return <ConcessionCard concession="%10" />
+        }
+        else if (this.props.user.score === "Zengin") {
+            return <ConcessionCard concession="%10" score="Zengin" />
+        }
+        else {
+            return <ConcessionCard concession="%15" />
+        }
+    }
+
+    renderPrivatizedGifts = () => {
+        if (this.props.user) {
+            return (
+                this.props.user.score === "Zengin" ?
+                    <div id="privatized-gifts">
+                        <div className="privatized-gifts-container">
+                            <PrivatizedGiftCard />
+                        </div>
+                    </div>
+                : null
+            );
+        }
+    }
+
     renderedCardItems = () => {
-        console.log("state =====> ", this.state.currentRecommendation);
+        console.log("user =====> ", this.props.user);
         return (
             this.props.recomments ?
                 <React.Fragment>
+                    {this.props.user ? this.renderConcessionCard() : null}
                     <div className="mycontainer-bg" style={{
                         backgroundImage: `url(${background})`,
                         backgroundRepeat: 'no-repeat',
@@ -59,16 +91,15 @@ class Recommendations extends React.Component {
                         // tıklanan öneriyi kontrol et. Ona ait öneri detayını ekrana bas
                         this.props.recomments.map((recommend) => {
                             if (this.state.currentRecommendation === recommend.header) {
-                                return (
-                                    <RecommendationDetail
-                                        header={recommend.header}
-                                        detatil={recommend.content} />
-                                )
+                                return ( <RecommendationDetail
+                                            header={recommend.header}
+                                            detatil={recommend.content} /> )
                             } else {
                                 return null;
                             }
                         })
                     }
+                    {this.renderPrivatizedGifts()}
                 </React.Fragment>
             : <RecommendationError />
         );
@@ -86,8 +117,11 @@ class Recommendations extends React.Component {
 // redux storedan propsları elde et
 const mapStateToProps = state => {
     if (state.user) {
-        //console.log(state.user.recomments[0].header);
-        return { recomments: state.user.recomments, id: state.user.id };
+        return {
+            recomments: state.user.recomments,
+            id: state.user.id,
+            user: state.user.user
+        };
     }
 };
 

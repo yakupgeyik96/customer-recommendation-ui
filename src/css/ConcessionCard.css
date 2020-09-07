@@ -1,0 +1,27 @@
+
+.concession-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-self: center;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.concession-card-text {
+    font-size: 27px;
+    color: white;
+}
+
+.concession-card {
+    width: 50%;
+    animation-name: concession-card-animation;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+}
+
+@keyframes concession-card-animation {
+    from {opacity: 0.3;}
+    to {opacity: 1;}
+}

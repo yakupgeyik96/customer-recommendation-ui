@@ -7,7 +7,7 @@ import { fetchRecommend, fetchUser } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
 import ConcessionCard from "../components/ConcessionCard";
-import PrivatizedGiftsContainer from "../components/PrivatizedGiftsContainer";
+import GiftCardContainer from "../components/GiftCardContainer";
 
 class Recommendations extends React.Component {
 
@@ -47,7 +47,7 @@ class Recommendations extends React.Component {
         if (this.props.user) {
             return (
                 this.props.user.score === "Zengin" ?
-                    <PrivatizedGiftsContainer />
+                    <GiftCardContainer />
                 : null
             );
         }

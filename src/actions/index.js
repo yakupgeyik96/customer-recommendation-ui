@@ -9,5 +9,6 @@ export const fetchUser = (id) => async dispatch => {
 
 export const fetchRecommend = (id) => async dispatch => {
     const response = await users.get(`/users/${id}`);
+    console.log("Recommendations ----------->", response.data.recommendations);
     dispatch({ type: types.FETCH_RECOMMEND, payload: response.data.recommendations });
 };

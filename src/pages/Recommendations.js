@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchRecommend, fetchUser } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
+import ConcessionCard from "../components/ConcessionCard";
 
 class Recommendations extends React.Component {
 
@@ -26,11 +27,22 @@ class Recommendations extends React.Component {
         console.log(event.target.parentNode.textContent); /* CardItem tıklandığında önerile metnini state'a ata */
     };
 
+    renderConcessionCard = () => {
+        if (this.props.user.segment === "Az") {
+            return <ConcessionCard concession="%5" />
+        } else if (this.props.user.segment === "Orta") {
+            return <ConcessionCard concession="%10" />
+        } else {
+            return <ConcessionCard concession="%15" />
+        }
+    }
+
     renderedCardItems = () => {
-        console.log("state =====> ", this.state.currentRecommendation);
+        console.log("user =====> ", this.props.user);
         return (
             this.props.recomments ?
                 <React.Fragment>
+                    {this.props.user ? this.renderConcessionCard() : null}
                     <div className="mycontainer-bg" style={{
                         backgroundImage: `url(${background})`,
                         backgroundRepeat: 'no-repeat',
@@ -69,6 +81,11 @@ class Recommendations extends React.Component {
                             }
                         })
                     }
+                    <div id="insurances">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda eaque et eum harum iusto laboriosam libero nihil non perferendis placeat praesentium quam quia quidem quo repellat velit voluptatem voluptatum! Ab consequuntur culpa ducimus earum est fugit laborum laudantium molestias nulla obcaecati possimus provident quasi quis repellendus saepe, voluptatem voluptates?
+                        </p>
+                    </div>
                 </React.Fragment>
             : <RecommendationError />
         );
@@ -86,8 +103,11 @@ class Recommendations extends React.Component {
 // redux storedan propsları elde et
 const mapStateToProps = state => {
     if (state.user) {
-        //console.log(state.user.recomments[0].header);
-        return { recomments: state.user.recomments, id: state.user.id };
+        return {
+            recomments: state.user.recomments,
+            id: state.user.id,
+            user: state.user.user
+        };
     }
 };
 

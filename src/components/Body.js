@@ -10,21 +10,21 @@ const divStyle = {
 };
 
 class Body extends React.Component {
-  render() {
-    return (
-      <div className="body-container" style={divStyle}>
-        <TextView />
-        <InfoContainer />
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <div className="body-container" style={divStyle}>
+                <TextView/>
+                <InfoContainer/>
+            </div>
+        )
+    }
 }
 
 //export default Body;
 
 // redux storedan propsları elde et
 const mapStateToProps = (state) => {
-  console.log(state.user);
   return { user: state.user };
 };
 

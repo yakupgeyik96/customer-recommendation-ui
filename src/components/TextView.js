@@ -5,7 +5,7 @@ class TextView extends React.Component {
   render() {
     return (
       <div className="ui raised very padded text container segment">
-        <p className="intro">{`Merhaba  ${this.props.amountOfTicket} ! İşte son biletin:`}</p>
+        <p className="intro">{`Merhaba  ${this.props.name} ! İşte son biletin:`}</p>
         <div className="grid-container">
           <div className="grid-div">
             <i className="plane icon" style={{fontSize: "48px"}}/>

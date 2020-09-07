@@ -11,6 +11,7 @@ const imageStyle = {
 };
 
 class InfoItem extends React.Component {
+
     render() {
         const iconColor = this.props.iconColor;
         return (

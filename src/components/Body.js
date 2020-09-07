@@ -30,22 +30,29 @@ class Body extends React.Component {
         : "",
     }; */
 
-    renderedBodyItems = () => {
-        if (this.props.user.user) {
-            return (
-                <div className="body-container" style={divStyle}>
-                    <TextView
-                        username={this.props.user.user.name}
-                        lastFlightDate={this.props.user.user.lastFlightDate}
-                        lastFlightLocation={this.props.user.user.lastFlightLocation}
-                    />
-                    <InfoContainer amountOfTicket={this.props.user.user.amountOfTicket} />
-                </div>
-            );
-        } else {
-            return <RecommendationError />;
-        }
-    };
+
+  renderedBodyItems = () => {
+    if (this.props.user.user) {
+      return (
+        <div className="body-container" style={divStyle}>
+          <TextView
+            username={this.props.user.user.name}
+            lastFlightDate={this.props.user.user.lastFlightDate}
+            lastFlightLocation={this.props.user.user.lastFlightLocation}
+          />
+          <InfoContainer
+            amountOfTicket={this.props.user.user.amountOfTicket}
+            mostFlightSeason={this.props.user.user.mostFlightSeason}
+            numberOfDifferentCities={
+              this.props.user.user.numberOfDifferentCities
+            }
+          />
+        </div>
+      );
+    } else {
+      return <RecommendationError />;
+    }
+  };
 
     render() {
         return <React.Fragment>{this.renderedBodyItems()}</React.Fragment>;

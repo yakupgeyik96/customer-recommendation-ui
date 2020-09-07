@@ -39,7 +39,13 @@ class Body extends React.Component {
             lastFlightDate={this.props.user.user.lastFlightDate}
             lastFlightLocation={this.props.user.user.lastFlightLocation}
           />
-          <InfoContainer amountOfTicket={this.props.user.user.amountOfTicket} />
+          <InfoContainer
+            amountOfTicket={this.props.user.user.amountOfTicket}
+            mostFlightSeason={this.props.user.user.mostFlightSeason}
+            numberOfDifferentCities={
+              this.props.user.user.numberOfDifferentCities
+            }
+          />
         </div>
       );
     } else {

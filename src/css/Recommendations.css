@@ -77,9 +77,15 @@
 .gift-card-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 2rem;
-    margin: 8rem 4.0rem 2rem 4.5rem;
-    border-radius: 5px;
-    box-shadow: 0 0 20px 2px gray;
+    margin: 5rem auto 3rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .gift-card-container {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

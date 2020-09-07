@@ -7,6 +7,7 @@ import { fetchRecommend, fetchUser } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
 import ConcessionCard from "../components/ConcessionCard";
+import PrivatizedGiftCard from "../components/PrivatizedGiftCard";
 
 class Recommendations extends React.Component {
 
@@ -28,12 +29,31 @@ class Recommendations extends React.Component {
     };
 
     renderConcessionCard = () => {
-        if (this.props.user.segment === "Az") {
+        if (this.props.user.score === "Az") {
             return <ConcessionCard concession="%5" />
-        } else if (this.props.user.segment === "Orta") {
+        }
+        else if (this.props.user.score === "Orta") {
             return <ConcessionCard concession="%10" />
-        } else {
+        }
+        else if (this.props.user.score === "Zengin") {
+            return <ConcessionCard concession="%10" score="Zengin" />
+        }
+        else {
             return <ConcessionCard concession="%15" />
+        }
+    }
+
+    renderPrivatizedGifts = () => {
+        if (this.props.user) {
+            return (
+                this.props.user.score === "Zengin" ?
+                    <div id="privatized-gifts">
+                        <div className="privatized-gifts-container">
+                            <PrivatizedGiftCard />
+                        </div>
+                    </div>
+                : null
+            );
         }
     }
 
@@ -71,21 +91,15 @@ class Recommendations extends React.Component {
                         // tıklanan öneriyi kontrol et. Ona ait öneri detayını ekrana bas
                         this.props.recomments.map((recommend) => {
                             if (this.state.currentRecommendation === recommend.header) {
-                                return (
-                                    <RecommendationDetail
-                                        header={recommend.header}
-                                        detatil={recommend.content} />
-                                )
+                                return ( <RecommendationDetail
+                                            header={recommend.header}
+                                            detatil={recommend.content} /> )
                             } else {
                                 return null;
                             }
                         })
                     }
-                    <div id="insurances">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda eaque et eum harum iusto laboriosam libero nihil non perferendis placeat praesentium quam quia quidem quo repellat velit voluptatem voluptatum! Ab consequuntur culpa ducimus earum est fugit laborum laudantium molestias nulla obcaecati possimus provident quasi quis repellendus saepe, voluptatem voluptates?
-                        </p>
-                    </div>
+                    {this.renderPrivatizedGifts()}
                 </React.Fragment>
             : <RecommendationError />
         );

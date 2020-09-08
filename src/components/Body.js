@@ -6,45 +6,34 @@ import { fetchUser } from "../actions";
 import RecommendationError from "../components/RecommendationError";
 
 const divStyle = {
-    justifyContent: "center",
-    margin: "5% auto",
+  justifyContent: "center",
+  padding: "5%",
+  background: "linear-gradient(134.78deg,#2dc44d,#2dc44d 6.12%,#0087ff)",
 };
 
 class Body extends React.Component {
-    /* componentwillmount ile profil sayfasında sorgusu
+  /* componentwillmount ile profil sayfasında sorgusu
           yapılan id ile kullanıcı ve öneri sorgusu yap */
-    componentDidMount() {
-        if (this.props) {
-            this.props.fetchUser(this.props.id);
-        }
+  componentDidMount() {
+    if (this.props) {
+      this.props.fetchUser(1); //this.props.id)
     }
-
-    /* sorgu yapıldıysa ilk öneriyi state'e ata yoksa null ata. */
-    /*state = {
-      name: this.props.user.user.name ? this.props.user.user.name : "",
-      lastFlightDate: this.props.user.user.lastFlightDate
-        ? this.props.user.user.lastFlightDate
-        : "",
-      lastFlightLocation: this.props.user.user.lastFlightLocation
-        ? this.props.user.user.lastFlightLocation
-        : "",
-    }; */
-
+  }
 
   renderedBodyItems = () => {
-    if (this.props.user.user) {
+    if (this.props.data.user) {
       return (
         <div className="body-container" style={divStyle}>
           <TextView
-            username={this.props.user.user.name}
-            lastFlightDate={this.props.user.user.lastFlightDate}
-            lastFlightLocation={this.props.user.user.lastFlightLocation}
+            username={this.props.data.user.name}
+            lastFlightDate={this.props.data.user.lastFlightDate}
+            lastFlightLocation={this.props.data.user.lastFlightLocation}
           />
           <InfoContainer
-            amountOfTicket={this.props.user.user.amountOfTicket}
-            mostFlightSeason={this.props.user.user.mostFlightSeason}
+            amountOfTicket={this.props.data.user.amountOfTicket}
+            mostFlightSeason={this.props.data.user.mostFlightSeason}
             numberOfDifferentCities={
-              this.props.user.user.numberOfDifferentCities
+              this.props.data.user.numberOfDifferentCities
             }
           />
         </div>
@@ -54,17 +43,17 @@ class Body extends React.Component {
     }
   };
 
-    render() {
-        return <React.Fragment>{this.renderedBodyItems()}</React.Fragment>;
-    }
+  render() {
+    return <React.Fragment>{this.renderedBodyItems()}</React.Fragment>;
+  }
 }
 
 // redux storedan propsları elde et
 const mapStateToProps = (state) => {
-    if (state.user) {
-        console.log(state.user);
-        return { user: state.user };
-    }
+  if (state.user) {
+    console.log(state.user);
+    return { data: state.user };
+  } //state.data
 };
 
 // componenti reduxa bağla

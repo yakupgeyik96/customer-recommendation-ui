@@ -1,0 +1,58 @@
+
+.gift-card hr {
+    opacity: 0.3;
+}
+
+.gift-card {
+    transition: 0.3s;
+    max-width: 30%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 2px gray;
+}
+
+.gift-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.gift-card-content {
+    margin: 1rem 1rem;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.gift-card-content span {
+    line-height: 1.4;
+}
+
+.gift-card-link {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.gift-card-link a {
+    color: #63bc47;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+    .gift-card {
+        max-width: 35%;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .gift-card {
+        max-width: 50%;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .gift-card {
+        max-width: 70%;
+        margin-top: 2rem;
+    }
+}

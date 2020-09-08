@@ -7,7 +7,7 @@ import { fetchRecommend, fetchUser } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
 import ConcessionCard from "../components/ConcessionCard";
-import PrivatizedGiftsContainer from "../components/PrivatizedGiftsContainer";
+import GiftCardContainer from "../components/GiftCardContainer";
 
 class Recommendations extends React.Component {
 
@@ -47,14 +47,13 @@ class Recommendations extends React.Component {
         if (this.props.user) {
             return (
                 this.props.user.score === "Zengin" ?
-                    <PrivatizedGiftsContainer />
+                    <GiftCardContainer />
                 : null
             );
         }
     }
 
     renderedCardItems = () => {
-        console.log("user =====> ", this.props.user);
         return (
             this.props.recomments ?
                 <React.Fragment>
@@ -75,6 +74,7 @@ class Recommendations extends React.Component {
                                     return (
                                         <CardItem
                                             active={active}
+                                            imageLink={recommendation.imageLink}
                                             handleCardClick={this.onCardClick}>
                                             {recommendation.header}
                                         </CardItem>
@@ -113,6 +113,7 @@ class Recommendations extends React.Component {
 // redux storedan propsları elde et
 const mapStateToProps = state => {
     if (state.user) {
+        console.log("recomments ---------> ", state.user.recomments);
         return {
             recomments: state.user.recomments,
             id: state.user.id,

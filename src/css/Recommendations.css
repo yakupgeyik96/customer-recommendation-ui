@@ -17,10 +17,10 @@
 /**************** CardItem.js styles *****************/
 .myitem {
     background-color: white;
-    width: 25rem;
+    width: 28rem;
     height: 25rem;
-    padding: 2rem;
-    margin: 2rem;
+    padding: 0.5rem;
+    margin: 2rem 5rem;
     font-size: 28px;
     border: 2px solid gray;
     border-radius: 0.5rem;
@@ -31,15 +31,10 @@
 .myitem:hover {
     cursor: pointer;
     box-shadow: 0 0 15px 5px black;
-    width: 26rem;
+    width: 29rem;
     height: 26rem;
-    margin: 1rem;
+    margin: 2rem 3.5rem;
     opacity: 1;
-}
-
-.myitem:hover .card-image {
-    height: 18rem;
-    width: 25rem;
 }
 
 .myitem-active {
@@ -48,27 +43,22 @@
     color: white;
     border-width: 5px;
     box-shadow: 0 0 15px 5px black;
-    width: 26rem;
+    width: 29rem;
     height: 26rem;
-    margin: 1rem;
+    margin: 2rem 3.5rem;
     opacity: 1;
-}
-
-.myitem-active .card-image {
-    height: 18rem;
-    width: 25rem;
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-items: center;
     align-items: center;
 }
 
 .card-image {
-    width: 24rem;
-    height: 17rem;
+    width: 99%;
+    height: 100%;
     margin-bottom: 2rem;
     border-radius: 0.5rem;
     transition: all 100ms;

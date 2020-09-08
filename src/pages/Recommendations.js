@@ -54,7 +54,6 @@ class Recommendations extends React.Component {
     }
 
     renderedCardItems = () => {
-        console.log("user =====> ", this.props.user);
         return (
             this.props.recomments ?
                 <React.Fragment>
@@ -75,6 +74,7 @@ class Recommendations extends React.Component {
                                     return (
                                         <CardItem
                                             active={active}
+                                            imageLink={recommendation.imageLink}
                                             handleCardClick={this.onCardClick}>
                                             {recommendation.header}
                                         </CardItem>
@@ -113,6 +113,7 @@ class Recommendations extends React.Component {
 // redux storedan propsları elde et
 const mapStateToProps = state => {
     if (state.user) {
+        console.log("recomments ---------> ", state.user.recomments);
         return {
             recomments: state.user.recomments,
             id: state.user.id,

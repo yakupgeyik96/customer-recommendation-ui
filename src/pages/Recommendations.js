@@ -11,6 +11,10 @@ import GiftCardContainer from "../components/GiftCardContainer";
 
 class Recommendations extends React.Component {
 
+    giftCardTitle = "Hediye Kart'a %10 indirim";
+    giftCardDescription = "Sevdiklerine verebileceğin en güzel hediye deneyimlerden başka ne olabilir? Tüm havayollarında 1 yıl boyunca kullanabileceğin uçak bileti hediye kartını %10 indirimle almak için tıkla!"
+    giftImageLink = "https://www.business.com/images/content/5ca/3d59a5a215e8a458b8199/0-800-";
+
     /* componentwillmount ile profil sayfasında sorgusu
         yapılan id ile kullanıcı ve öneri sorgusu yap */
     componentWillMount() {
@@ -21,7 +25,7 @@ class Recommendations extends React.Component {
     }
 
     /* sorgu yapıldıysa ilk öneriyi state'e ata yoksa null ata. */
-    state = { currentRecommendation: this.props.recomments ? this.props.recomments[0].header : null };
+    state = { currentRecommendation: this.props.recomments ? this.props.recomments[0].title : null };
 
     onCardClick = (event) => {
         this.setState({ currentRecommendation: event.target.parentNode.textContent });
@@ -29,13 +33,13 @@ class Recommendations extends React.Component {
     };
 
     renderConcessionCard = () => {
-        if (this.props.user.score === "Az") {
+        if (this.props.user.segment.includes("az")) {
             return <ConcessionCard concession="%5" />
         }
-        else if (this.props.user.score === "Orta") {
+        else if (this.props.user.segment.includes("orta")) {
             return <ConcessionCard concession="%10" />
         }
-        else if (this.props.user.score === "Zengin") {
+        else if (this.props.user.segment.includes("zengin")) {
             return <ConcessionCard concession="%10" score="Zengin" />
         }
         else {
@@ -45,16 +49,44 @@ class Recommendations extends React.Component {
 
     renderPrivatizedGifts = () => {
         if (this.props.user) {
-            return (
-                this.props.user.score === "Zengin" ?
-                    <GiftCardContainer />
-                : null
-            );
+            if (this.props.user.segment === "genczengin") {
+                return (
+                    <GiftCardContainer
+                        redirectLink="https://www.enuygun.com/otel/"
+                        imageLink="https://cdn3.enuygun.com/media/lib/1x1080/uploads/image/rixos-downtown-antalya-genel-39090154.webp"
+                        title="En iyi tatil ve şehir otellerini en uygun fiyatlarla bulun!"
+                        description="Gideceğin yerdeki en iyi tatil ve şehir otellerini en uygun fiyatlarla bulmak için tıkla!"
+                        giftTitle={this.giftCardTitle}
+                        giftImageLink={this.giftImageLink}
+                        giftDescription= {this.giftCardDescription} />
+                );
+            } else if (this.props.user.segment === "yetzengin") {
+                return (
+                    <GiftCardContainer
+                        redirectLink="https://www.enuygun.com/sigorta/"
+                        imageLink="https://cdn.enuygun.com/sigorta/v-9c732/static/og-image.jpg"
+                        title="ENUYGUN Sigorta Teklifleri"
+                        description="İhtiyacına en uygun sigorta tekliflerini, daha düşük prim ödeyip kazançlı çıkacağın farklı sigorta firmalarından karşılaştırarak almak için tıkla!"
+                        giftTitle={this.giftCardTitle}
+                        giftImageLink={this.giftImageLink}
+                        giftDescription= {this.giftCardDescription} />
+                );
+            } else if (this.props.user.segment === "yaslizengin") {
+                return (
+                    <GiftCardContainer
+                        redirectLink="https://www.enuygun.com/sigorta/saglik-sigortasi/"
+                        imageLink="https://cdn.enuygun.com/sigorta/v-9c732/static/jumbotron/saglik.jpg"
+                        title="Özel Sağlık Sigortası"
+                        description="İhtiyacına en uygun sağlık sigortasını, daha düşük prim ödeyip kazançlı çıkacağın farklı sigorta firmalarından karşılaştırarak almak için tıkla!"
+                        giftTitle={this.giftCardTitle}
+                        giftImageLink={this.giftImageLink}
+                        giftDescription= {this.giftCardDescription} />
+                );
+            }
         }
     }
 
     renderedCardItems = () => {
-        console.log("user =====> ", this.props.user);
         return (
             this.props.recomments ?
                 <React.Fragment>
@@ -70,13 +102,14 @@ class Recommendations extends React.Component {
                                 carditem'a gönder */
                                 this.props.recomments.map((recommendation) => {
                                     console.log(recommendation);
-                                    const active = this.state.currentRecommendation === recommendation.header ? 'myitem-active' : null;
+                                    const active = this.state.currentRecommendation === recommendation.title ? 'myitem-active' : null;
 
                                     return (
                                         <CardItem
                                             active={active}
+                                            imageLink={recommendation.image_url}
                                             handleCardClick={this.onCardClick}>
-                                            {recommendation.header}
+                                            {recommendation.title}
                                         </CardItem>
                                     );
                                 })
@@ -86,11 +119,15 @@ class Recommendations extends React.Component {
                     {
                         // tıklanan öneriyi kontrol et. Ona ait öneri detayını ekrana bas
                         this.props.recomments.map((recommend) => {
-                            if (this.state.currentRecommendation === recommend.header) {
+                            if (this.state.currentRecommendation === recommend.title) {
                                 return ( <RecommendationDetail
-                                            header={recommend.header}
-                                            detatil={recommend.content} /> )
-                            } else {
+                                            header={recommend.title}
+                                            detatil={recommend.description}
+                                            imageLink={recommend.image_url}
+                                            redirectlink={recommend.recommendation_url} />
+                                )
+                            }
+                            else {
                                 return null;
                             }
                         })

@@ -10,7 +10,7 @@ class Navbar extends React.Component {
     navItems = items.NAV_ITEMS;
 
     state = {
-        activeIndex: "Profil",
+        activeIndex: "Sana Özel",
         userId: null
     };
 

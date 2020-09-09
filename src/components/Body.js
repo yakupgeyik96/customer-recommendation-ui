@@ -52,7 +52,8 @@ class Body extends React.Component {
 const mapStateToProps = (state) => {
   if (state.user) {
     console.log(state.user);
-    return { data: state.user };
+    return { data: state.user,
+        lastflight: state.user.lastflight };
   } //state.data
 };
 

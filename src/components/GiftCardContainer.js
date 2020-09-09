@@ -22,7 +22,9 @@ class GiftCardContainer extends React.Component {
 
                 <GiftCardItem
                     content={this.props.giftTitle}
-                    imageLink={this.props.giftImageLink}/>
+                    imageLink={this.props.giftImageLink}
+                    link={this.props.giftRedirectLink}
+                    linkText={this.props.giftDescription}/>
             </div>
         );
     }

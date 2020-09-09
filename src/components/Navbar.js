@@ -97,6 +97,7 @@ class Navbar extends React.Component {
 
 // redux storedan propsları elde et
 const mapStateToProps = state => {
+    console.log("-------------------------------------", state.user);
     return { user: state.user };
 };
 

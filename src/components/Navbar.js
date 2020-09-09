@@ -2,7 +2,7 @@ import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
 import { connect } from "react-redux";
-import { fetchUser, fetchRecommend } from "../actions";
+import { fetchUser, fetchRecommendations, spreadId } from "../actions";
 import '../css/Navbar.css';
 
 class Navbar extends React.Component {
@@ -28,8 +28,9 @@ class Navbar extends React.Component {
      * fonksiyonunu kullanarak sorgu yap */
     onSearch = (e) => {
         e.preventDefault();
-        this.props.fetchRecommend(this.state.userId);
         this.props.fetchUser(this.state.userId);
+        this.props.fetchRecommendations(this.state.userId);
+        this.props.spreadId(this.state.userId);
     };
 
     renderedItems = () => this.navItems.map((navItem) => {
@@ -89,5 +90,5 @@ const mapStateToProps = state => {
 // componenti reduxa bağla
 export default connect(
     mapStateToProps,
-    { fetchUser, fetchRecommend }
+    { fetchUser, fetchRecommendations, spreadId }
 )(Navbar);

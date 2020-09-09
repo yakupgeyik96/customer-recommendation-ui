@@ -29,9 +29,9 @@
 .rec-detail-text {
     align-self: center;
     text-align: justify;
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 2rem;
-    color: #63bc47;
+    color: green;
     font-style: italic;
     line-height: 1.2;
 }

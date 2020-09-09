@@ -9,26 +9,26 @@ import snowflake from "../images/snowflake.PNG";
 import tree from "../images/tree.PNG";
 
 class InfoContainer extends React.Component {
-  iconChangeForSeason = (props) => {
-    const season = props.mostFlightSeason[0];
+
+  iconChangeForSeason = (season) => {
     console.log(season);
     switch (season) {
-      case "Yaz":
+      case "summer":
         return {
           icon: sun,
           iconColor: "orange",
         };
-      case "Sonbahar":
+      case "autumn":
         return {
           icon: leaf,
           iconColor: "brown",
         };
-      case "İlkbahar":
+      case "spring":
         return {
           icon: tree,
           iconColor: "green",
         };
-      case "Kış":
+      case "winter":
         return {
           icon: snowflake,
           iconColor: "grey",
@@ -36,8 +36,21 @@ class InfoContainer extends React.Component {
     }
   };
 
+  translatedSeason = () => {
+    if (this.props.mostFlightSeason === 'winter') {
+      return ["kış", "Kış"];
+    } else if (this.props.mostFlightSeason === "autumn") {
+      return ["sonbahar", "Sonbahar"];
+    } else if (this.props.mostFlightSeason === "summer") {
+      return ["yaz", "Yaz"];
+    } else {
+      return ["ilkbahar", "İlkbahar"];
+    }
+  }
+
   render() {
-    const iconSeason = this.iconChangeForSeason(this.props);
+    console.log("---->", this.props);
+    const iconSeason = this.iconChangeForSeason(this.props.mostFlightSeason);
     console.log(iconSeason);
     const infoItemTexts = texts.BODY_TEXTS;
     console.log(infoItemTexts[0]);
@@ -56,10 +69,10 @@ class InfoContainer extends React.Component {
             <InfoItem
                 beginText={infoItemTexts[1].beginText}
                 endText={infoItemTexts[1].endText}
-                textSelector={this.props.mostFlightSeason[0]}
+                textSelector={this.translatedSeason()[0]}
                 icon={iconSeason.icon}
                 iconColor={iconSeason.iconColor}
-                linkText={`${this.props.mostFlightSeason[0]} ${infoItemTexts[1].linkText}`}
+                linkText={`${this.translatedSeason()[1]} ${infoItemTexts[1].linkText}`}
                 link={infoItemTexts[1].link}
             />
             <InfoItem

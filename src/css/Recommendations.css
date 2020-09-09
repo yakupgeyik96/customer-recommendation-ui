@@ -75,7 +75,7 @@
     background-size: cover;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
     .gift-card-container {
         flex-direction: column;
         justify-content: space-between;

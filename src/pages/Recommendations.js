@@ -14,7 +14,7 @@ class Recommendations extends React.Component {
     giftCardTitle = "Hediye Kart'a %10 indirim";
     giftCardDescription = "Sevdiklerine verebileceğin en güzel hediye deneyimlerden başka ne olabilir? Tüm havayollarında 1 yıl boyunca kullanabileceğin uçak bileti hediye kartını %10 indirimle almak için tıkla!"
     giftImageLink = "https://www.business.com/images/content/5ca/3d59a5a215e8a458b8199/0-800-";
-
+    giftLink = "https://www.enuygun.com/enuygun-hediye-kart/";
     /* componentwillmount ile profil sayfasında sorgusu
         yapılan id ile kullanıcı ve öneri sorgusu yap */
     componentWillMount() {
@@ -61,7 +61,8 @@ class Recommendations extends React.Component {
                         description="Gideceğin yerdeki en iyi tatil ve şehir otellerini en uygun fiyatlarla bulmak için tıkla!"
                         giftTitle={this.giftCardTitle}
                         giftImageLink={this.giftImageLink}
-                        giftDescription= {this.giftCardDescription} />
+                        giftDescription= {this.giftCardDescription}
+                        giftRedirectLink={this.giftLink} />
                 );
             } else if (this.props.recommendations[0].cluster === "yetzengin") {
                 return (
@@ -72,7 +73,8 @@ class Recommendations extends React.Component {
                         description="İhtiyacına en uygun sigorta tekliflerini, daha düşük prim ödeyip kazançlı çıkacağın farklı sigorta firmalarından karşılaştırarak almak için tıkla!"
                         giftTitle={this.giftCardTitle}
                         giftImageLink={this.giftImageLink}
-                        giftDescription= {this.giftCardDescription} />
+                        giftDescription= {this.giftCardDescription}
+                        giftRedirectLink={this.giftLink} />
                 );
             } else if (this.props.recommendations[0].cluster === "yaslizengin") {
                 return (
@@ -83,7 +85,8 @@ class Recommendations extends React.Component {
                         description="İhtiyacına en uygun sağlık sigortasını, daha düşük prim ödeyip kazançlı çıkacağın farklı sigorta firmalarından karşılaştırarak almak için tıkla!"
                         giftTitle={this.giftCardTitle}
                         giftImageLink={this.giftImageLink}
-                        giftDescription= {this.giftCardDescription} />
+                        giftDescription= {this.giftCardDescription}
+                        giftRedirectLink={this.giftLink} />
                 );
             }
         }

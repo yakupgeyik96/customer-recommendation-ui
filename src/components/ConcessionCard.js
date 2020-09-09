@@ -6,10 +6,10 @@ class ConcessionCard extends React.Component {
     renderConcessionAndInsurance = () => {
         return (
             <div className="ui buttons massive" style={{ boxShadow:'0 0 10px 5px gray'}}>
-                <button className="ui positive button">{`Tüm fırsatlara ${this.props.concession} indirimle sahip olun`}</button>
+                <button className="ui positive button">{`Size özel önerilen temalara ${this.props.concession} indirimle sahip olun`}</button>
                 <div className="or" data-text="ve"/>
                 <button className="ui positive button">
-                    <a href="#privatized-gifts" style={{color: 'white'}}>Size özel hediye kartlarını görün</a>
+                    <a href="#privatized-gifts" style={{color: 'white'}}>Size özel ürün fırsatlarını yakalayın</a>
                 </button>
             </div>
         );
@@ -18,7 +18,7 @@ class ConcessionCard extends React.Component {
     renderOnlyConcession = () => {
         return (
             <button className="ui positive button massive concession-card">
-                {`Tüm fırsatlar ${this.props.concession} indirimli`}
+                {`Size özel önerilen temalara ${this.props.concession} indirimle sahip olun`}
             </button>
         );
     }

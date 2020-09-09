@@ -42,37 +42,37 @@ class InfoContainer extends React.Component {
     const infoItemTexts = texts.BODY_TEXTS;
     console.log(infoItemTexts[0]);
     return (
-      <div className="ui raised very padded text container segment">
-        <div className="ui divided items">
-          <InfoItem
-            beginText={infoItemTexts[0].beginText}
-            endText={infoItemTexts[0].endText}
-            textSelector={this.props.amountOfTicket}
-            icon={ticket}
-            iconColor={"#bd9d5a"}
-            linkText={infoItemTexts[0].linkText}
-            link={infoItemTexts[0].link}
-          />
-          <InfoItem
-            beginText={infoItemTexts[1].beginText}
-            endText={infoItemTexts[1].endText}
-            textSelector={this.props.mostFlightSeason[0]}
-            icon={iconSeason.icon}
-            iconColor={iconSeason.iconColor}
-            linkText={`${this.props.mostFlightSeason[0]} ${infoItemTexts[1].linkText}`}
-            link={infoItemTexts[1].link}
-          />
-          <InfoItem
-            beginText={infoItemTexts[2].beginText}
-            endText={infoItemTexts[2].endText}
-            textSelector={this.props.numberOfDifferentCities}
-            icon={point}
-            iconColor={"red"}
-            linkText={infoItemTexts[2].linkText}
-            link={infoItemTexts[2].link}
-          />
+        <div className="ui raised very padded text container segment">
+          <div className="ui divided items">
+            <InfoItem
+                beginText={infoItemTexts[0].beginText}
+                endText={infoItemTexts[0].endText}
+                textSelector={this.props.amountOfTicket}
+                icon={ticket}
+                iconColor={"#bd9d5a"}
+                linkText={infoItemTexts[0].linkText}
+                link={infoItemTexts[0].link}
+            />
+            <InfoItem
+                beginText={infoItemTexts[1].beginText}
+                endText={infoItemTexts[1].endText}
+                textSelector={this.props.mostFlightSeason[0]}
+                icon={iconSeason.icon}
+                iconColor={iconSeason.iconColor}
+                linkText={`${this.props.mostFlightSeason[0]} ${infoItemTexts[1].linkText}`}
+                link={infoItemTexts[1].link}
+            />
+            <InfoItem
+                beginText={infoItemTexts[2].beginText}
+                endText={infoItemTexts[2].endText}
+                textSelector={this.props.numberOfDifferentCities}
+                icon={point}
+                iconColor={"red"}
+                linkText={infoItemTexts[2].linkText}
+                link={infoItemTexts[2].link}
+            />
+          </div>
         </div>
-      </div>
     );
   }
 }

@@ -30,6 +30,8 @@ class Recommendations extends React.Component {
         this.setState({ currentRecommendation: event.target.parentNode.textContent }); /* CardItem tıklandığında önerile metnini state'a ata */
     };
 
+    /* Sayfanın üst kısmında kişiye özel gösterilecek olan indirim uyarısının ekrana
+    * basılmasını sağlayan fonksiyon */
     renderConcessionCard = () => {
         if (this.props.recommendations[0].cluster.includes("az")) {
             return <ConcessionCard concession="%5" />
@@ -45,6 +47,9 @@ class Recommendations extends React.Component {
         }
     }
 
+    /* Kullanıcının kümesinin genczengin, yetiskinzengin ya da yaslizengin olmasına göre
+    *  gösterilecek olan otel, sigorta, ya da  sağlık sigortasıının kontrolünü yapan
+    *  fonksiyon */
     renderPrivatizedGifts = () => {
         if (this.props.recommendations) {
             if (this.props.recommendations[0].cluster === "genczengin") {
@@ -84,6 +89,11 @@ class Recommendations extends React.Component {
         }
     }
 
+    /* Öneriler api'den başarılı şekilde alındıysa
+        1) ilgili indirim uyarısını sayfada göster
+        2) öneriler dizisini map fonksiyonu ile dolaşarak, gerekli parametreleri alıp öneri kartlarını ekrana bas
+        3) aynı şekilde gerekli parametreleri alarak öneri detaylarını ekrana bas
+        4) Eğer sorgu yapılmadıysa ekrana uyarı ver. */
     renderedCardItems = () => {
         return (
             this.props.recommendations ?

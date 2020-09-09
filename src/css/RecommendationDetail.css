@@ -3,9 +3,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 1rem;
-    background-color: #63BC47;
-    box-shadow: 0 0 15px 2px gray;
+    margin: 2rem auto;
+    width: 85%;
+    padding: 3rem;
 }
 
 .recomment-detail-content {

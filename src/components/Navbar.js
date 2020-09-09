@@ -2,7 +2,15 @@ import React from "react";
 import NavItem from "./NavItem";
 import * as items from './navItems';
 import { connect } from "react-redux";
-import { fetchUser, fetchRecommendations, spreadId } from "../actions";
+import {
+    fetchUser,
+    fetchRecommendations,
+    fetchDifferentDestinationsCount,
+    fetchLastFlight,
+    fetchSeason,
+    fetchTransactionsCount,
+    fetchUserInfo,
+    spreadId } from "../actions";
 import '../css/Navbar.css';
 
 class Navbar extends React.Component {
@@ -31,6 +39,11 @@ class Navbar extends React.Component {
         this.props.fetchUser(this.state.userId);
         this.props.fetchRecommendations(this.state.userId);
         this.props.spreadId(this.state.userId);
+        this.props.fetchUserInfo(this.state.userId);
+        this.props.fetchTransactionsCount(this.state.userId);
+        this.props.fetchSeason(this.state.userId);
+        this.props.fetchLastFlight(this.state.userId);
+        this.props.fetchDifferentDestinationsCount(this.state.userId);
     };
 
     renderedItems = () => this.navItems.map((navItem) => {
@@ -53,7 +66,7 @@ class Navbar extends React.Component {
 
     render() {
         return (
-            <div className="ui container">
+            <div className="ui fluid container">
                 <div className="ui stackable menu massive">
                     <div className="logo-container">
                         <span className="logo-text">
@@ -90,5 +103,12 @@ const mapStateToProps = state => {
 // componenti reduxa bağla
 export default connect(
     mapStateToProps,
-    { fetchUser, fetchRecommendations, spreadId }
+    {   fetchUser,
+        fetchRecommendations,
+        fetchDifferentDestinationsCount,
+        fetchLastFlight,
+        fetchSeason,
+        fetchTransactionsCount,
+        fetchUserInfo,
+        spreadId }
 )(Navbar);

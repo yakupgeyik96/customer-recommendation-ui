@@ -5,7 +5,7 @@
 
 .gift-card {
     transition: 0.3s;
-    max-width: 30%;
+    max-width: 40%;
     border: 1px solid gray;
     border-radius: 5px;
     box-shadow: 0 0 20px 2px gray;
@@ -18,7 +18,7 @@
 .gift-card-content {
     margin: 1rem 1rem;
     text-align: justify;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .gift-card-content span {
@@ -26,14 +26,12 @@
 }
 
 .gift-card-link {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    margin-left: 1rem;
+    margin: 1rem 1rem;
 }
 
 .gift-card-link a {
     color: #63bc47;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 1200px) {

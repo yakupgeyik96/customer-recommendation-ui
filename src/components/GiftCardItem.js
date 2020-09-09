@@ -1,12 +1,12 @@
 import React from "react";
 import '../css/GiftCardItem.css';
-import image from '../images/bg1.jpg';
 
 class GiftCardItem extends React.Component {
     render() {
         return (
             <div className="gift-card">
-                <img src={this.props.imageLink} alt="gift-card" style={{ width: '100%' }} />
+                <img src={this.props.imageLink} alt="gift-card"
+                     style={{ width: '100%', border: '1px solid gray' }} />
                 <div className="gift-card-content">
                     <span>{this.props.content}</span>
                 </div>

@@ -1,10 +1,11 @@
 
 .recomment-detail-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
-    padding: 5rem;
-    background-color: #e5e5e5;
+    padding: 1rem;
+    background-color: #63BC47;
+    box-shadow: 0 0 15px 2px gray;
 }
 
 .recomment-detail-content {
@@ -12,8 +13,7 @@
     flex-direction: column;
     justify-content: flex-start;
     background-color: white;
-    padding: 2rem;
-    margin-left: 1rem;
+    padding: 5rem;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 20px 2px gray;
@@ -21,18 +21,24 @@
 
 .rec-detail-header {
     align-self: center;
+    line-height: 1.4;
     font-size: 45px;
     font-family: 'Righteous', cursive;
 }
 
 .rec-detail-text {
+    align-self: center;
     text-align: justify;
-    font-size: 24px;
+    font-size: 30px;
     margin-top: 2rem;
+    color: #63bc47;
+    font-style: italic;
+    line-height: 1.2;
 }
 
 .rec-image {
-    width: 50rem;
+    width: 100%;
+    height: 20rem;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 20px 2px gray;

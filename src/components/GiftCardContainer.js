@@ -15,16 +15,14 @@ class GiftCardContainer extends React.Component {
                         message="Kristy is an art director living in New York."/> */}
 
                 <GiftCardItem
-                    content="Kristy is an art director living in New York."
-                    imageLink="https://cdn3.enuygun.com/media/lib/1x1080/uploads/image/nashira-resort-aqua-spa-genel-39554356.webp"
-                    link="https://www.enuygun.com/otel/"
-                    linkText="Daha Fazlası..."/>
+                    content={this.props.title}
+                    imageLink={this.props.imageLink}
+                    link={this.props.redirectLink}
+                    linkText={this.props.description} />
 
-                    <GiftCardItem
-                    content="Kristy is an art director living in New York."
-                    imageLink="https://cdn.shopify.com/s/files/1/2504/1616/products/fee525424486bc85c5d5d1bf1c0f05a7_1200x1200.jpg?v=1591743256"
-                    link="https://www.enuygun.com/otel/"
-                    linkText="Daha Fazlası..."/>
+                <GiftCardItem
+                    content={this.props.giftTitle}
+                    imageLink={this.props.giftImageLink}/>
             </div>
         );
     }

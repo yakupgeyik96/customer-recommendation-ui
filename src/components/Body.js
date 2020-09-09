@@ -25,15 +25,18 @@ class Body extends React.Component {
       return (
         <div className="body-container" style={divStyle}>
           <TextView
-            username={this.props.data.user.name}
-            lastFlightDate={this.props.data.user.lastFlightDate}
-            lastFlightLocation={this.props.data.user.lastFlightLocation}
+            username={this.props.userInfos.name}
+            lastFlightDate={this.props.lastFlight.departure}
+            lastFlightOrigin={this.props.lastFlight.origin}
+            lastFlightDestination={this.props.lastFlight.destination}
           />
           <InfoContainer
-            amountOfTicket={this.props.data.user.amountOfTicket}
-            mostFlightSeason={this.props.data.user.mostFlightSeason}
+            amountOfTicket={
+              this.props.differentDestinationsCount.different_destinations_count
+            }
+            mostFlightSeason={this.props.seasons[0]}
             numberOfDifferentCities={
-              this.props.data.user.numberOfDifferentCities
+              this.props.transactionCount.transactions_count
             }
           />
         </div>
@@ -52,9 +55,25 @@ class Body extends React.Component {
 const mapStateToProps = (state) => {
   if (state.user) {
     console.log(state.user);
-    return { data: state.user };
+    return {
+      data: state.user,
+      lastFlight: state.user.lastflight,
+      seasons: state.user.seasons,
+      differentDestinationsCount: state.user.differentdestinationcount,
+      transactionCount: state.user.transactionscount,
+      userInfos: state.user.userInfos,
+    };
   } //state.data
 };
 
 // componenti reduxa bağla
-export default connect(mapStateToProps, { fetchUser })(Body);
+export default connect(mapStateToProps, {
+  fetchUser,
+  fetchRecommendations,
+  fetchDifferentDestinationsCount,
+  fetchLastFlight,
+  fetchSeason,
+  fetchTransactionsCount,
+  fetchUserInfo,
+  spreadId,
+})(Body);

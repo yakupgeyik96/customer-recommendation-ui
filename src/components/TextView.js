@@ -20,7 +20,8 @@ class TextView extends React.Component {
 
           <div className="grid-div grid-text">
             <p className="ticket-description">
-              {this.props.lastFlightDate} - {this.props.lastFlightLocation}
+              {this.props.lastFlightDate} - {this.props.lastFlightOrigin} -
+              {this.props.lastFlightDestination}
             </p>
             <p className="ticket-text">
               <a

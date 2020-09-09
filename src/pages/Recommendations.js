@@ -3,7 +3,7 @@ import '../css/Recommendations.css';
 import CardItem from "../components/CardItem";
 import background from '../images/plane_bg.jpg';
 import { connect } from "react-redux";
-import { fetchRecommend, fetchUser } from '../actions'
+import { fetchRecommendations } from '../actions'
 import RecommendationError from "../components/RecommendationError";
 import RecommendationDetail from "../components/RecommendationDetail";
 import ConcessionCard from "../components/ConcessionCard";
@@ -19,27 +19,25 @@ class Recommendations extends React.Component {
         yapılan id ile kullanıcı ve öneri sorgusu yap */
     componentWillMount() {
         if (this.props) {
-            this.props.fetchRecommend(this.props.id);
-            this.props.fetchUser(this.props.id);
+            this.props.fetchRecommendations(this.props.id);
         }
     }
 
     /* sorgu yapıldıysa ilk öneriyi state'e ata yoksa null ata. */
-    state = { currentRecommendation: this.props.recomments ? this.props.recomments[0].title : null };
+    state = { currentRecommendation: this.props.recommendations ? this.props.recommendations[0].title : null };
 
     onCardClick = (event) => {
-        this.setState({ currentRecommendation: event.target.parentNode.textContent });
-        console.log(event.target.parentNode.textContent); /* CardItem tıklandığında önerile metnini state'a ata */
+        this.setState({ currentRecommendation: event.target.parentNode.textContent }); /* CardItem tıklandığında önerile metnini state'a ata */
     };
 
     renderConcessionCard = () => {
-        if (this.props.user.segment.includes("az")) {
+        if (this.props.recommendations[0].cluster.includes("az")) {
             return <ConcessionCard concession="%5" />
         }
-        else if (this.props.user.segment.includes("orta")) {
+        else if (this.props.recommendations[0].cluster.includes("orta")) {
             return <ConcessionCard concession="%10" />
         }
-        else if (this.props.user.segment.includes("zengin")) {
+        else if (this.props.recommendations[0].cluster.includes("zengin")) {
             return <ConcessionCard concession="%10" score="Zengin" />
         }
         else {
@@ -48,8 +46,8 @@ class Recommendations extends React.Component {
     }
 
     renderPrivatizedGifts = () => {
-        if (this.props.user) {
-            if (this.props.user.segment === "genczengin") {
+        if (this.props.recommendations) {
+            if (this.props.recommendations[0].cluster === "genczengin") {
                 return (
                     <GiftCardContainer
                         redirectLink="https://www.enuygun.com/otel/"
@@ -60,7 +58,7 @@ class Recommendations extends React.Component {
                         giftImageLink={this.giftImageLink}
                         giftDescription= {this.giftCardDescription} />
                 );
-            } else if (this.props.user.segment === "yetzengin") {
+            } else if (this.props.recommendations[0].cluster === "yetzengin") {
                 return (
                     <GiftCardContainer
                         redirectLink="https://www.enuygun.com/sigorta/"
@@ -71,7 +69,7 @@ class Recommendations extends React.Component {
                         giftImageLink={this.giftImageLink}
                         giftDescription= {this.giftCardDescription} />
                 );
-            } else if (this.props.user.segment === "yaslizengin") {
+            } else if (this.props.recommendations[0].cluster === "yaslizengin") {
                 return (
                     <GiftCardContainer
                         redirectLink="https://www.enuygun.com/sigorta/saglik-sigortasi/"
@@ -88,9 +86,9 @@ class Recommendations extends React.Component {
 
     renderedCardItems = () => {
         return (
-            this.props.recomments ?
+            this.props.recommendations ?
                 <React.Fragment>
-                    {this.props.user ? this.renderConcessionCard() : null}
+                    {this.props.recommendations ? this.renderConcessionCard() : null}
                     <div className="mycontainer-bg" style={{
                         backgroundImage: `url(${background})`,
                         backgroundRepeat: 'no-repeat',
@@ -100,8 +98,7 @@ class Recommendations extends React.Component {
                         <div className="mycontainer">
                             { /* öneriler dizisindeki değerleri map ile
                                 carditem'a gönder */
-                                this.props.recomments.map((recommendation) => {
-                                    console.log(recommendation);
+                                this.props.recommendations.map((recommendation) => {
                                     const active = this.state.currentRecommendation === recommendation.title ? 'myitem-active' : null;
 
                                     return (
@@ -118,7 +115,7 @@ class Recommendations extends React.Component {
                     </div>
                     {
                         // tıklanan öneriyi kontrol et. Ona ait öneri detayını ekrana bas
-                        this.props.recomments.map((recommend) => {
+                        this.props.recommendations.map((recommend) => {
                             if (this.state.currentRecommendation === recommend.title) {
                                 return ( <RecommendationDetail
                                             header={recommend.title}
@@ -151,14 +148,13 @@ class Recommendations extends React.Component {
 const mapStateToProps = state => {
     if (state.user) {
         return {
-            recomments: state.user.recomments,
             id: state.user.id,
-            user: state.user.user
+            recommendations: state.user.recommendations
         };
     }
 };
 
 export default connect(
     mapStateToProps,
-    { fetchRecommend, fetchUser }
+    { fetchRecommendations }
 )(Recommendations);

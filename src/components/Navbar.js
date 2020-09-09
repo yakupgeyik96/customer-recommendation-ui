@@ -3,7 +3,6 @@ import NavItem from "./NavItem";
 import * as items from './navItems';
 import { connect } from "react-redux";
 import {
-    fetchUser,
     fetchRecommendations,
     fetchDifferentDestinationsCount,
     fetchLastFlight,
@@ -36,7 +35,6 @@ class Navbar extends React.Component {
      * fonksiyonunu kullanarak sorgu yap */
     onSearch = (e) => {
         e.preventDefault();
-        this.props.fetchUser(this.state.userId);
         this.props.fetchRecommendations(this.state.userId);
         this.props.spreadId(this.state.userId);
         this.props.fetchUserInfo(this.state.userId);
@@ -97,15 +95,13 @@ class Navbar extends React.Component {
 
 // redux storedan propsları elde et
 const mapStateToProps = state => {
-    console.log("-------------------------------------", state.user);
     return { user: state.user };
 };
 
 // componenti reduxa bağla
 export default connect(
     mapStateToProps,
-    {   fetchUser,
-        fetchRecommendations,
+    {   fetchRecommendations,
         fetchDifferentDestinationsCount,
         fetchLastFlight,
         fetchSeason,

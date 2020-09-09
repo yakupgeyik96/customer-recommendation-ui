@@ -12,7 +12,6 @@ const imageStyle = {
 
 class InfoItem extends React.Component {
   render() {
-    const iconColor = this.props.iconColor;
     return (
       <div className="item">
         <div className="ui tiny image" style={imageStyle}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Body from "./components/Body";
+import Body from "./pages/Body";
 import Recommendations from "./pages/Recommendations";
 
 class App extends React.Component {

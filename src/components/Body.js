@@ -24,29 +24,32 @@ class Body extends React.Component {
 
 
   renderedBodyItems = () => {
-    if (this.props.id) {
+    console.log("---------------------__>", this.props.seasons ? this.props.seasons[0] : null);
       return (
-          <div className="body-container" style={divStyle}>
-            <TextView
-                username={ this.props.userInfos.name }
-                lastFlightDate={ this.props.lastFlight.departure }
-                lastFlightOrigin={ this.props.lastFlight.origin }
-                lastFlightDestination={ this.props.lastFlight.destination }
-            />
-            <InfoContainer
-                amountOfTicket={
-                  this.props.differentDestinationsCount.different_destinations_count
-                }
-                mostFlightSeason={ this.props.seasons[0] }
-                numberOfDifferentCities={
-                  this.props.transactionCount.transactions_count
-                }
-            />
-          </div>
+          this.props.userInfos &&
+          this.props.lastFlight &&
+          this.props.differentDestinationsCount &&
+          this.props.transactionCount &&
+          this.props.seasons ?
+            <div className="body-container" style={divStyle}>
+              <TextView
+                  username={ this.props.userInfos.name }
+                  lastFlightDate={ this.props.lastFlight.departure }
+                  lastFlightOrigin={ this.props.lastFlight.origin }
+                  lastFlightDestination={ this.props.lastFlight.destination }
+              />
+              <InfoContainer
+                  amountOfTicket={
+                    this.props.differentDestinationsCount.different_destinations_count
+                  }
+                  mostFlightSeason={ this.props.seasons[0] }
+                  numberOfDifferentCities={
+                    this.props.transactionCount.transactions_count
+                  }
+              />
+            </div>
+          : <RecommendationError />
       );
-    } else {
-      return <RecommendationError />;
-    }
   };
 
   render() {
@@ -58,6 +61,7 @@ class Body extends React.Component {
 const mapStateToProps = (state) => {
   if (state.user) {
     return {
+      user: state.user,
       lastFlight: state.user.lastflight,
       seasons: state.user.seasons,
       differentDestinationsCount: state.user.differentdestinationcount,

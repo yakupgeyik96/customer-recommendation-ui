@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/TextView.css";
-import * as texts from "./stringConfig";
+
 class TextView extends React.Component {
   render() {
     return (

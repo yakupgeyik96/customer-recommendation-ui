@@ -52,3 +52,11 @@
     font-size: 36px;
   }
 }
+
+a:hover {
+  color: #4183c4;
+}
+
+i:hover {
+  color: #4183c4;
+}

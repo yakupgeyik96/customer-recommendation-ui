@@ -26,12 +26,15 @@ class TextView extends React.Component {
               {this.props.lastFlightDestination}
             </p>
             <p className="ticket-text">
-              <a
-                href="https://www.enuygun.com/ucak-bileti/"
-                style={{ color: "#63bc47" }}
-              >
-                <i>Yenisini almaya ne dersin?</i>
-              </a>
+              <i>
+                <a
+                  href="https://www.enuygun.com/ucak-bileti/"
+                  style={{ color: "#63bc47" }}
+                  target="_blank"
+                >
+                  Yeni seyahatini planlayalım mı?
+                </a>
+              </i>
             </p>
           </div>
         </div>

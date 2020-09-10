@@ -4,7 +4,7 @@ export const BODY_TEXTS = [
   {
     beginText: "Bizden bu zamana kadar tam",
     endText: "bilet aldın!",
-    linkText: "Bir sonrakini almaya ne dersin?",
+    linkText: "Yeni maceralara var mısın?",
     link: "https://www.enuygun.com/ucak-bileti/gezgin/",
   },
   {

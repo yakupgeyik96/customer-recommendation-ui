@@ -99,11 +99,6 @@ class Recommendations extends React.Component {
     }
   };
 
-  /* Öneriler api'den başarılı şekilde alındıysa
-        1) ilgili indirim uyarısını sayfada göster
-        2) öneriler dizisini map fonksiyonu ile dolaşarak, gerekli parametreleri alıp öneri kartlarını ekrana bas
-        3) aynı şekilde gerekli parametreleri alarak öneri detaylarını ekrana bas
-        4) Eğer sorgu yapılmadıysa ekrana uyarı ver. */
   renderedCardItems = () => {
     return this.props.recommendations ? (
       <React.Fragment>

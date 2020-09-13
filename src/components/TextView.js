@@ -4,12 +4,10 @@ import "../css/TextView.css";
 class TextView extends React.Component {
   render() {
     return (
-      //uçak bileti tasarımının gösterildiği kısım
       <div className="ui raised very padded text container segment">
         <p className="intro">{`Merhaba  ${this.props.username} ! İşte son biletin:`}</p>
         <div className="grid-container">
           <div className="grid-div">
-            {/*icon div'i*/}
             <i
               className="plane icon"
               style={{
@@ -19,7 +17,6 @@ class TextView extends React.Component {
               }}
             />
           </div>
-          {/*bilet bilgileri*/}
           <div className="grid-div grid-text">
             <p className="ticket-description">
               {this.props.lastFlightDate} - {this.props.lastFlightOrigin} -{" "}

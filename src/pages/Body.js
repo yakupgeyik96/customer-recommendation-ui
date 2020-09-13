@@ -21,12 +21,7 @@ const divStyle = {
 
 class Body extends React.Component {
   renderedBodyItems = () => {
-    console.log(
-      "---------------------__>",
-      this.props.seasons ? this.props.seasons[0] : null
-    );
     return (
-      /*eğer user bilgileri geldyse ekrana componentleri göster*/
       this.props.userInfos &&
         this.props.lastFlight &&
         this.props.differentDestinationsCount &&
@@ -41,16 +36,15 @@ class Body extends React.Component {
           />
           <InfoContainer
             amountOfTicket={
-              this.props.differentDestinationsCount.different_destinations_count
+              this.props.transactionCount.transactions_count
             }
             mostFlightSeason={this.props.seasons[0]}
             numberOfDifferentCities={
-              this.props.transactionCount.transactions_count
+              this.props.differentDestinationsCount.different_destinations_count
             }
           />
         </div>
       ) : (
-        /*user bilgileri gelmediyse yani hala sorgu yapılmadıysa, ekranda uyarıyı göster*/
         <RecommendationError />
       )
     );
@@ -61,7 +55,6 @@ class Body extends React.Component {
   }
 }
 
-// redux storedan propsları elde et
 const mapStateToProps = (state) => {
   if (state.user) {
     return {
@@ -73,10 +66,9 @@ const mapStateToProps = (state) => {
       userInfos: state.user.userInfos,
       id: state.user.id,
     };
-  } //state.data
+  }
 };
 
-// componenti reduxa bağla
 export default connect(mapStateToProps, {
   fetchRecommendations,
   fetchDifferentDestinationsCount,

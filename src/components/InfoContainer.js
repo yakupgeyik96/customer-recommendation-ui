@@ -59,7 +59,6 @@ class InfoContainer extends React.Component {
     return (
       <div className="ui raised very padded text container segment">
         <div className="ui divided items">
-          {/* alınan bilet sayısını gösteren kısım */}
           <InfoItem
             beginText={infoItemTexts[0].beginText}
             endText={infoItemTexts[0].endText}
@@ -69,7 +68,6 @@ class InfoContainer extends React.Component {
             linkText={infoItemTexts[0].linkText}
             link={infoItemTexts[0].link}
           />
-          {/* en çok hangi mevsimde seyahat ettiğini gösteren kısım */}
           <InfoItem
             beginText={infoItemTexts[1].beginText}
             endText={infoItemTexts[1].endText}
@@ -81,7 +79,6 @@ class InfoContainer extends React.Component {
             }`}
             link={infoItemTexts[1].link}
           />
-          {/* kaç farklı şehir gezdiğini gösteren kısım */}
           <InfoItem
             beginText={infoItemTexts[2].beginText}
             endText={infoItemTexts[2].endText}

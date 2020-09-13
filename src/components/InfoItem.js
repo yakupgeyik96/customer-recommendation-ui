@@ -12,12 +12,10 @@ const imageStyle = {
 
 class InfoItem extends React.Component {
   render() {
-    /* user ile ilgili bilgileri gösteren item*/
     return (
-      /*icon kısmı*/
       <div className="item">
         <div className="ui tiny image" style={imageStyle}>
-          <img src={this.props.icon}></img>
+          <img src={this.props.icon}/>
         </div>
         {/*üst bilgi*/}
         <div className="middle aligned content">
@@ -26,7 +24,6 @@ class InfoItem extends React.Component {
             <span style={spanStyle}>{` ${this.props.textSelector} `}</span>
             {this.props.endText}
           </div>
-          {/*alt bilgi ve link*/}
           <div className="meta">
             <div className="description">
               <a href={this.props.link} style={{ color: "#63bc47" }}>

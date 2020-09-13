@@ -24,11 +24,6 @@ class ConcessionCard extends React.Component {
     }
 
     render() {
-        /*<div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className="concession-card-container">
-                    <span className="concession-card-text">{`Tüm fırsatlar ${this.props.concession} indirimli`}</span>
-                </div>
-            </div>*/
         return (
             <div className="concession-card-container">
                 {

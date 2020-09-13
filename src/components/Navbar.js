@@ -21,18 +21,14 @@ class Navbar extends React.Component {
     userId: null,
   };
 
-  /* Nav item tıklandığında text içeriğini state'e ata */
   onItemClick = (value) => {
     this.setState({ activeIndex: value });
   };
 
-  /* Searchbar'a girilen id değerini state'e ata */
   onInputChange = (e) => {
     this.setState({ userId: e.target.value });
   };
 
-  /* Id sorgulama yapıldığında actions klasörü içindeki fetchUser
-   * fonksiyonunu kullanarak sorgu yap */
   onSearch = (e) => {
     e.preventDefault();
     this.props.fetchRecommendations(this.state.userId);
@@ -93,13 +89,11 @@ class Navbar extends React.Component {
   }
 }
 
-// redux storedan propsları elde et
 const mapStateToProps = (state) => {
   console.log(state.user);
   return { user: state.user };
 };
 
-// componenti reduxa bağla
 export default connect(mapStateToProps, {
   fetchRecommendations,
   fetchDifferentDestinationsCount,
